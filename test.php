@@ -31,14 +31,7 @@
     <div id="hosted-desktop-calc" class="calc1">
          
     </div>
-    <p>
-    <!--<div id="calc2" class="calc">
-         
-    </div>-->
-    
-    <!--<div id="calc3" class="calc">
-         
-    </div>-->
+    <p>     
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) |#calc2 -->
     <script>
