@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="2.0.3" client="site" method="upgrade">
+    <name>Custom Calculator (SC) 2.0.3</name>
+    <author>Edward Paul Baucan</author>
+    <version>2.0.3</version>
+    <description>Custom Calculator v2.0.3</description>
+    <files>
+        <filename>mod_vcalc_sc.xml</filename>
+        <filename module="mod_vcalc_sc">mod_vcalc_sc.php</filename>
+        <filename>index.html</filename>
+	<filename>test.php</filename>
+        <filename>helper.php</filename>
+        <filename>tmpl/default.php</filename>
+        <filename>tmpl/index.html</filename>
+	<folder>lib</folder>
+    </files>	 
+    <help key="JHELP_EXTENSIONS_MODULE_MANAGER_ARTICLES_CATEGORIES" />
+	<config>
+		<fields name="params">
+			<fieldset name="basic">					
+				<field name="calc_type" type="text" default="CCC" required="true" label="Calculator's Type(s)" description="Alias name of the calculator to be shown. Initially, the values present are CCC and MC. Note: To show several calculator type in a page, please type the alias name with pipe as delimitation. e.g. CCC|MC"></field>
+				<field name="con_name" type="text" default="" required="true" label="Calculator's Container(s)" description="Please place the container's id or a unique class name that would contain the display of the calculator type above. Note: If there are multiple declaration of calculator type above, please indicate the container's name with pipe as delimitation. e.g. #calc1|#calc2"></field>
+				<!--<field name="con_width" type="text" default="80%" required="true" label="Container's Width" description="Value(s) will be in terms of percentage. Note: In case your calculator type hold several types, please indicate the widths here also with a pipe delimited."></field>
+				<field name="obj_containers" type="text" default=".calc" label="" description=""></field>
+				-->							 
+				<field name="load_bootstrap" type="radio" default="0" label="Load Included Bootstrap" description="Load the attached Bootstrap of this module"> 
+					<option value="1">Yes</option> 
+					<option value="0">No</option> 
+				</field>
+				<field name="load_jquery" type="radio" default="0" label="Load Included Jquery version" description="Load the attached version of Jquery"> 
+					<option value="1">Yes</option> 
+					<option value="0">No</option>  
+				</field>
+				<!--<field name="con_cookie" type="text" default="" required="true" label="Cookie Value" description="Placing a value here would indicate that the calculator app will use this value and will be assigned to be used as cookie app."></field>-->
+				<field name="load_jq_cookie" type="radio" default="1" label="Load Jquery Cookie" description="Load Jquery Cookie"> 
+					<option value="1">Yes</option> 
+					<option value="0">No</option> 
+				</field>
+			</fieldset>
+		</fields>
+	</config>
+</extension>

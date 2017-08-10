@@ -1,0 +1,526 @@
+<?xml version="1.0" encoding="utf-8"?>
+<calculator>
+	<calc_group id="0" name="CCC" description="">
+	  <title></title>
+	  <panel_type>Yes</panel_type>
+	  <number_column>2</number_column>	  
+	  <denomination>£</denomination>
+	  <constantvar>
+	  	 <variable id="0" init="150">PricePerTB</variable>		  
+	  </constantvar>
+	  <changevar>
+	  	 <changevariable id="0" init="0" target="dropdown1|dropdown2|dropdown3">Dropdowns</changevariable>	
+		 <changevariable id="1" init="0" target="checkbox1|checkbox2">Checkboxes</changevariable> 
+		 <changevariable id="2" init="0" target="slider1">SliderU</changevariable> 
+		 <changevariable id="3" init="0" target="slider2">SliderT</changevariable>   
+	  </changevar> 
+	  <resultboxes>
+	    <position>head</position>
+	  	<boxgroup id="0">
+			<label>Set Up:</label>
+			<id>objid1</id>
+			<default>0</default>
+			<withborder>no</withborder>
+			<roundnumber>no</roundnumber>
+			<formula></formula>
+			<email_label></email_label>
+		</boxgroup>
+		<boxgroup id="1">
+			<label>Per User Per Month:</label>
+			<id>objid2</id>
+			<default>0</default>
+			<withborder>yes</withborder>
+			<roundnumber>fixed</roundnumber>
+            <formula>Math.round((( SliderT * PricePerTB ) / SliderU )) + ( Dropdowns + Checkboxes )</formula>
+			<email_label>User Per Month</email_label>			 
+		</boxgroup>
+		<boxgroup id="2">
+			<label>Total Per Month:</label>
+			<id>objid3</id>
+			<default>0</default>
+			<withborder>yes</withborder>
+			<roundnumber>fixed</roundnumber>
+			<formula>((Math.round((( SliderT * PricePerTB ) / SliderU )) + ( Dropdowns + Checkboxes )) * SliderU)</formula>
+			<email_label>Total Per Month</email_label>		 
+		</boxgroup>
+	  </resultboxes>
+	  <onload_general>	
+	  	   <onload_generalgroup id="1" resultholder="" roundnumber="yes" type="exe">base.setSelectedItem()</onload_generalgroup>	 
+		   <onload_generalgroup id="2" resultholder="" roundnumber="yes" type="exe">base.updateChangeVariables()</onload_generalgroup>	
+		   <onload_generalgroup id="3" resultholder="" roundnumber="yes" type="exe">base.updateResultBox(model)</onload_generalgroup>
+	  </onload_general>
+	  <group_objects>
+	  	<object_values id="0">
+		  <type>range</type>
+		  <header>How many users do you have?</header>
+		  <id>slider1</id>
+		  <label></label>
+		  <default>0</default>
+		  <tooltip></tooltip>
+		  <required>0</required>
+		  <readonly>no</readonly>
+		  <email_label>Total Users</email_label>
+		  <included_in_more_option>No</included_in_more_option>
+		  <data>
+		  	<contents id="0">
+				<min>5</min>
+				<max>100</max>
+				<step>1</step>
+				<value>0</value>				
+			</contents>
+		  </data> 
+          <addedcontainer></addedcontainer>
+		  <actions>
+		    <event action="change" function="" extendedfunction="base.updateResultBox(model)"></event>
+		  </actions>
+		</object_values> 
+		<object_values id="1">
+		  <type>range</type>
+		  <header>How many terabytes of storage would you like?</header>
+		  <id>slider2</id>
+		  <label></label>
+		  <default>0</default>
+		  <tooltip></tooltip>
+		  <required>0</required>
+		  <readonly>no</readonly>
+		  <email_label>Total Terabytes</email_label>
+		  <included_in_more_option>No</included_in_more_option>		  
+		  <data>
+		  	<contents id="0">
+				<min>0.5</min>
+				<max>10</max>
+				<step>0.5</step>
+				<value>0</value>				
+			</contents>		  	
+		  </data>
+		  <addedcontainer>
+		    <label>{object0} billion emails or {object1} million Word docs or {object2} million pictures</label>
+			<idnames>demail|dworddocs|dpic</idnames>
+			<onload_values>
+			   <onloadgroup id="0" resultholder="demail" roundnumber="no" type="html">$('#slider2').val()</onloadgroup>
+			   <onloadgroup id="1" resultholder="dworddocs" roundnumber="fixed" type="html">$('#slider2').val()*3.6</onloadgroup>
+			   <onloadgroup id="2" resultholder="dpic" roundnumber="no" type="html">$('#slider2').val()</onloadgroup>		   
+			</onload_values>				 
+		  </addedcontainer> 
+          <actions>
+		    <event action="change" function="" extendedfunction="base.updateResultBox(model)">
+				<actiongroups id="0" resultholder="demail" roundnumber="no" type="html">$('#slider2').val()</actiongroups>
+				<actiongroups id="1" resultholder="dworddocs" roundnumber="fixed" type="html">$('#slider2').val()*3.6</actiongroups>
+				<actiongroups id="2" resultholder="dpic" roundnumber="no" type="html">$('#slider2').val()</actiongroups>		
+		    </event>
+		  </actions>
+		</object_values>
+		<object_values id="2">
+		  <type>dropdown</type>
+		  <header>Which hosted desktop technology do you require?</header>
+		  <id>dropdown1</id>
+		  <label>Choose a value</label>
+		  <default></default>
+		  <tooltip>Choose a value</tooltip>
+		  <required>0</required>
+		  <readonly>no</readonly>
+		  <email_label>Hosted Desktop</email_label>
+		  <included_in_more_option>No</included_in_more_option>
+		  <data>
+		  	<contents id="0">
+				<text>None - Work Offline with File Cloud +£0</text>
+				<value>0</value>
+				<selected>yes</selected>				 
+			</contents>
+			<contents id="1">
+				<text>Microsoft Remote Desktop Server (RDS) +£25 (For average office work)</text>
+				<value>25</value>
+				<selected>no</selected>				 
+			</contents>
+			<contents id="2">
+				<text>Microsoft Virtual Desktop Infrastructure (VDI) +£50 (Dedicated Processing Power)</text>
+				<value>50</value>
+				<selected>no</selected>				 
+			</contents>			 
+		  </data> 
+		  <addedcontainer></addedcontainer>
+          <actions>
+		    <event action="change" function="" extendedfunction="base.updateResultBox(model)">
+				<actiongroups id="0" resultholder="" roundnumber="no" target="checkbox2" type="select-value" selectvalue="target.item=0" other-value="">None - Work Offline with File Cloud +£0</actiongroups>
+				<actiongroups id="1" resultholder="" roundnumber="no" target="dropdown3" type="remove-value" selectvalue="target.item=2" other-value="">Microsoft Remote Desktop Server (RDS) +£25 (For average office work)</actiongroups>
+		    </event>
+		  </actions>
+		</object_values>
+		<object_values id="3">
+		  <type>dropdown</type>
+		  <header>Which version of Office software would you like?</header>
+		  <id>dropdown2</id>
+		  <label>Choose a value</label>
+		  <default></default>
+                  <tooltip>Choose a value</tooltip>
+		  <required>0</required>
+	          <readonly>no</readonly>
+		  <email_label>Office Version</email_label>
+		  <included_in_more_option>No</included_in_more_option>
+		  <data>
+		  	<contents id="0">
+				<text>Microsoft Outlook with Apache Open Office £0</text>
+				<value>0</value>
+				<selected>yes</selected>				 			 
+			</contents>
+			<contents id="1">
+				<text>Microsoft Office Standard +£10 (Outlook, Word, Excel, Publisher, PowerPoint)</text>
+				<value>10</value>
+				<selected>no</selected>				 			 
+			</contents>
+			<contents id="2">
+				<text>Microsoft Office Professional Plus +£15 (Outlook, Word, Excel, Powerpoint, Publisher Access, 
+
+Infopath, Lync)</text>
+				<value>15</value>
+				<selected>0</selected>							 
+			</contents>					 
+		  </data> 
+		  <addedcontainer></addedcontainer>
+		  <actions>
+		    <event action="change" function="" extendedfunction="base.updateResultBox(model)"></event>
+		  </actions>
+		</object_values>
+		<object_values id="4">
+		  <type>checkbox</type>
+		  <header>What cloud features would you like?</header>
+		  <id>checkbox1</id>
+		  <label></label>
+		  <default></default>
+		  <tooltip></tooltip>
+         	  <required>0</required>
+		  <email_label>Cloud Features</email_label>
+		  <included_in_more_option>No</included_in_more_option>
+		  <data>
+		  	<contents id="0">
+				<text>Exchange 2016 Email Server</text>
+				<value>0</value>
+				<checked>yes</checked>
+				<tooltip><![CDATA[ <button class="md-close"></button><div><div class="hidden-xs col-md-3 fb2"></div><h3>Exchange 2016 Email Server</h3><p>Microsoft's industry leading email and communications platform is called Microsoft Exchange Server. We run the latest stable version, Exchange 2010, with all users being due for upgrade to 2013 as and when it passes our lab tests.</p><p>Mailbox sizes are not determined by us, you simply decide our much of your storage space you allocate to Exchange. If you would like Senior Management to have larger mailboxes than staff, no problem, that's easy to do.</p><p>You can access the Exchange Server from the Serviced Cloud system, but also by having Outlook installed on your computer, or from your mobile phone or from a web page using the Outlook Web App.</p><p>Email is sent immediately and automatically scanned for Virus and Spam.</p><div class="curvy lightGrayBox"><p><strong>Read More:</strong><br><a href="http://www.microsoft.com/exchange" target="_blank">http://www.microsoft.com/exchange</a><br><a href="http://en.wikipedia.org/wiki/Microsoft_Exchange_Server" target="_blank">http://en.wikipedia.org/wiki/Microsoft_Exchange_Server</a></p></div><br clear="all"></div> ]]></tooltip>
+				<tooltip_behavior>popup</tooltip_behavior>
+				<readonly>no</readonly>
+				<disabled>yes</disabled>				 
+			</contents>
+			<contents id="1">
+				<text>Anti Spam and Anti Virus</text>
+				<value>0</value>
+				<checked>yes</checked>					
+				<tooltip><![CDATA[ <button class="md-close"></button><div><div class="hidden-xs col-md-3"></div><h3>AntiSpam and AntiVirus</h3><p>The entire system is fully scanned using latest Anti Virus definitions, and other security procedures ensure that it is not possible to install Malware on the system.</p><p>Spam protection is also available for free, detecting and eradicating 99% of Spam before it arrives in your Inbox.</p><p>Optional MimeCast:</p><p>Adding Mimecast to your account means you can use more advanced email features such as TLS and Historic Archiving for up to 10 Years. Mimecast is the holy grail of Email Security Systems and is available as an added extra.</p><br clear="all"></div> ]]></tooltip>  	
+				<tooltip_behavior>popup</tooltip_behavior>
+				<readonly>no</readonly>	
+				<disabled>yes</disabled>			 
+			</contents>
+			<contents id="2">
+				<text>Employee Stats +£2</text>
+				<value>2</value>
+				<checked>no</checked>	
+				<tooltip><![CDATA[ <button class="md-close"></button><div><div class="hidden-xs col-md-3 fb20"></div><h3>Employee Stats</h3><p>Find out if employees are using their time productively; perfect for when staff are working in different locations:</p><div class="col-md-8"><ul class="gCheck col-md-6"><li>Discover which employees spend too much time browsing the Internet or chatting</li><li>Find out if computers in your office are used for non-business purposes</li><li>Identify the most visited web sites</li><li>Track time spent on the Internet for any employee, workstation or group of employees</li><li>Monitor software and document usage</li></ul><ul class="gCheck col-md-6"><li>Get the actual picture of what software is used, when and by who</li><li>Identify the most popular software</li><li>Monitor employee attendance</li><li>Monitor employee productivity</li></ul><div class="clearfix"></div></div><br clear="all"> </div> ]]></tooltip>	
+				<tooltip_behavior>popup</tooltip_behavior>
+				<readonly>no</readonly>
+				<disabled>no</disabled>			 
+			</contents>
+			<contents id="3">
+				<text>SQL 2014 Database Server +£12</text>
+				<value>12</value>
+				<checked>no</checked>
+				<tooltip><![CDATA[ <button class="md-close"></button><div><div class="hidden-xs col-md-3"></div><h3>MS SQL Server</h3><p>This product is included to allow clients the opportunity to run their industry specific databases on Serviced Cloud.</p><p>Microsoft's SQL server is one of the worlds leading Database platforms, and thousands of databases systems use it as their back end.</p><p>Read More:</p><p>http://en.wikipedia.org/wiki/Microsoft_SQL_Server<br>http://www.microsoft.com/en-us/sqlserver/default.aspx</p><br clear="all"></div> ]]></tooltip>  
+				<tooltip_behavior>popup</tooltip_behavior>
+				<readonly>no</readonly>
+				<disabled>no</disabled>					 
+			</contents>
+			<contents id="4">
+				<text>Two Factor Authentication +£10</text>
+				<value>10</value>
+				<checked>no</checked>
+				<tooltip><![CDATA[ <button class="md-close"></button><div><div class="hidden-xs col-md-3 fb23"></div><h3>Two Factor Authentication</h3><p>ServicedCloud provide logins with a simple username and password. Entering these two pieces of information grants access to the entire cloud system from company databases, to email systems, and other sensitive information. However users may inadvertently share their details, or use passwords that are in use for other online accounts. Phishing attacks trick people daily into revealing their passwords, and users on unsecured networks (e.g. at coffee shops) can have their passwords sniffed. Malicious viruses and spyware can capture passwords and send them over the network to attackers.</p><p>Furthermore, it's impossible to tell who has access to your users' accounts, or even if anyone is accessing them illicitly. In the past year alone, attackers have compromised Sony, HBGary, and Gawker (and many more) by simply gaining knowledge of users' passwords.</p><p>The most practical way to strengthen authentication is to require a second factor after the username/password stage. Since a password is something that a user knows, ensuring that the user also has something thwarts attackers that steal or gain access to passwords.</p><br clear="all"></div> ]]></tooltip>      
+				<tooltip_behavior>popup</tooltip_behavior>
+				<readonly>no</readonly>
+				<disabled>no</disabled>					 
+			</contents>
+			<contents id="5">
+				<text>Mimecast Email Security and Archiving +£4</text>
+				<value>4</value>
+				<checked>no</checked>
+				<tooltip><![CDATA[ <button class="md-close"></button><div><div class="hidden-xs col-md-3 fb22"></div><h3>Mimecast Email Security and Archiving</h3><p>Standard Spam and Anti Virus filtering is included in our standard package to ensure that all our client's email arrives securely. Our standard system is satisfactory and represents excellent value for money, but there are other systems on the market.</p><p>There are times when email communications are absolutely critical, and for businesses that require something a little more advanced we recommend Mimecast.</p><p>Mimecast is a world leading enterprise security company consistently featured in the Sunday Times Tech Track 100. The system provides extensive email filtering for both inbound and outbound email with extended features such as Transport Layer Security (TLS). The enterprise version additionally contains features allowing automatic archiving of emails going back 10 years and the rapid recovery of old emails for legal purposes (e-discovery).</p><p>If you rely on email transactions for your business, or have to meet any regulatory compliance standards then the upgrade to Mimecast is definitely something to consider. For more information please visit <a href="http://www.mimecast.com/" target="_blank">www.mimecast.com</a> or <a href="http://www.mimecast.com/documents/datasheets/mimecast-unified-email-management-datasheet.pdf" target="_blank">download the datasheet.</a></p><br clear="all"></div>]]></tooltip>
+				<tooltip_behavior>popup</tooltip_behavior>
+				<readonly>no</readonly>
+				<disabled>no</disabled>					 
+			</contents>
+			<contents id="6">
+				<text>Domain Name and DNS (FREE)</text>
+				<value>0</value>
+				<checked>no</checked>
+				<tooltip><![CDATA[ <button class="md-close"></button><div><div class="hidden-xs col-md-3 fb15"></div><h3>Domain Name and DNS</h3><p>Although typically a small cost to any client in the first place, our goal is to be a true one stop shop and take the hassle out of your computing stress. With this in mind we offer to move your Domain Name to us to try and ensure that one simple contract takes care of everything.</p><p>Domain Name Registration with automatic renewal is available for free for one domain name per client. We will also include between 3 and 5 DNS servers depending on the domain name extension.</p><p>.co.uk, .com, .net are all free. Some more exotic domains like .de or .it may incur a small fee. More than one domain name may include a small fee.</p><p>Adding Mimecast to your account means you  can use more advanced email features such as TLS and Historic Archiving for up  to 10 Years. Mimecast is the holy grail of Email Security Systems and is  available as an added extra.</p><br clear="all"></div> ]]></tooltip>
+				<tooltip_behavior>popup</tooltip_behavior>
+				<readonly>no</readonly>	
+				<disabled>no</disabled>				 
+			</contents>
+			<contents id="7">
+				<text>Website Hosting (FREE)</text>
+				<value>0</value>
+				<checked>no</checked>
+				<tooltip><![CDATA[ <button class="md-close"></button><div><div class="hidden-xs col-md-3 fb8"></div>
+<h3>Website Hosting</h3><p>Included in the package is web hosting  space, allowing you to cancel your existing arrangement and save money.</p><p>We can host most websites. Technology  includes PHP, ASP, Windows Hosting Servers, MySQL, MS SQL, Joomla, Wordpress,  Magento, FTP, static IP addresses.</p><p>Your web space is set up as per your  requirements and flexibility is key.</p><div class="curvy lightGrayBox"><p><em>NB: In some extreme circumstances we will charge extra for hosting. This is where your website either exceed several Gbs in disk spce or the processing or bandwidth requirements are in excess of a standard business website. For example if you were an online store.</em></p></div><br clear="all"></div> ]]></tooltip>
+				<tooltip_behavior>popup</tooltip_behavior>
+				<readonly>no</readonly>	
+				<disabled>no</disabled>				 
+			</contents>			 
+		  </data>
+		  <addedcontainer></addedcontainer>
+		  <actions>
+		    <event action="click" function="" extendedfunction="base.updateResultBox(model)"></event>
+		  </actions> 
+		</object_values>
+		<object_values id="5">
+		  <type>checkbox</type>
+		  <header>What offline features would you like?</header>
+		  <id>checkbox2</id>
+		  <label></label>
+		  <default></default>
+		  <tooltip></tooltip>
+		  <required>0</required>
+		  <readonly>no</readonly>
+		  <email_label>Offline Features</email_label>
+		  <included_in_more_option>No</included_in_more_option>
+		  <data>
+		  	<contents id="0">
+				<text>File Cloud +£2</text>
+				<value>2</value>
+				<checked>no</checked>
+				<tooltip></tooltip>
+				<tooltip_behavior>hover</tooltip_behavior>
+				<readonly>no</readonly>	
+				<disabled>no</disabled>		 
+			</contents>
+			<contents id="1">
+				<text>License to Install Office software locally</text>
+				<value>20</value>
+				<checked>no</checked>
+				<tooltip></tooltip>	
+				<tooltip_behavior>hover</tooltip_behavior>
+				<readonly>no</readonly>
+				<disabled>no</disabled>			 
+			</contents>
+			<contents id="2">
+				<text>Endpoint Management £2</text>
+				<value>2</value>
+				<checked></checked>
+				<tooltip></tooltip>	
+				<tooltip_behavior>hover</tooltip_behavior>
+				<readonly>no</readonly>	
+				<disabled>no</disabled>		 
+			</contents>					 
+		  </data> 
+		  <addedcontainer></addedcontainer>
+	      <actions>
+		    <event action="click" function="" extendedfunction="base.updateResultBox(model)">
+				<actiongroups id="0" resultholder="" roundnumber="no" target="dropdown2" type="select-increase" selectvalue="" other-value="*2">License to Install Office software locally</actiongroups>				 
+		    </event>
+		  </actions>
+		</object_values>
+		<object_values id="6">
+		  <type>dropdown</type>
+		  <header>What phone system would you like?</header>
+		  <id>dropdown3</id>
+		  <label>Choose a value</label>
+		  <default></default>
+          <tooltip>Choose a value</tooltip>
+		  <required>0</required>
+		  <readonly>no</readonly>
+		  <email_label>Phone System</email_label>
+		  <included_in_more_option>No</included_in_more_option>
+		  <data>
+		  	<contents id="0">
+				<text>None</text>
+				<value></value>
+				<selected>yes</selected>						 
+			</contents>
+			<contents id="1">
+				<text>Hosted Asterisk +£8</text>
+				<value>8</value>
+				<selected>no</selected>
+						 
+			</contents>
+			<contents id="2">
+				<text>Hosted Lync Server +£15</text>
+				<value>15</value>
+				<selected>no</selected>							 
+			</contents>						 
+		  </data> 
+		  <addedcontainer></addedcontainer>
+		  <actions>
+		    <event action="change" function="" extendedfunction="base.updateResultBox(model)">
+				<actiongroups id="0" resultholder="demail" roundnumber="no" type="html" other-value="">$('#slider2').val()</actiongroups>
+			</event>
+		  </actions>
+		</object_values>
+		<object_values id="7">
+		  <type>button-collapse</type>
+		  <header></header>
+		  <id>bs1</id>
+		  <label>More Options</label>
+		  <label2>Less Options</label2>
+		  <rounds>Yes</rounds>  
+		  <default></default>
+                  <tooltip></tooltip>
+                  <required></required>
+		  <data></data>
+		  <addedcontainer></addedcontainer>
+		  <actions>
+		    <event action="click" function="base.moveOptionDiv(this)" extendedfunction=""></event>
+		  </actions>		   
+		</object_values>
+		<object_values id="8">
+		  <type>button-submit</type>
+		  <header></header>
+		  <id>bs2</id>
+		  <label>Email Me My Quote</label>	
+		  <label2></label2>	  
+		  <rounds>Yes</rounds>
+		  <default></default>
+                  <tooltip></tooltip>
+                  <required></required>
+		  <data></data>
+		  <addedcontainer></addedcontainer>
+		  <actions>
+		    <event action="click" function="base.emailAction(model)" extendedfunction="">
+		    		<actiongroups id="0" resultholder="" roundnumber="no" type="fetch" other-value="">slider1|slider2|dropdown1|dropdown2|checkbox1|checkbox2|dropdown3|objid2|objid3</actiongroups>
+		    </event>
+		  </actions>		   
+		</object_values>
+	  </group_objects>
+	  <email_form>
+	  	<email_body>
+			<item_node name="client_firstname" label="First Name" type="text" function="" required="1" default="" />
+			<item_node name="client_lastname" label="Last Name" type="text" function="" required="1" default="" />
+			<item_node name="company_name" label="Company Name" type="text" function="" required="1" default="" />
+			<item_node name="client_email" label="Email" type="text" function="base.isEmail(x)" required="1" default="" />
+			<item_node name="client_phone" label="Phone" type="text" function="base.isPhone(x)" required="1" default="" />			
+		</email_body>
+		<email_button>
+			<button_node label="Cancel" trigger="modal-close" />
+			<button_node label="Submit Data" trigger="send" />
+		</email_button>
+	  </email_form>	      
+	</calc_group>
+	<calc_group id="1" name="MC" description="">
+	  <title></title>
+	  <panel_type>No</panel_type>
+	  <number_column>1</number_column>	
+	  <denomination>£</denomination> 
+	  <constantvar>
+	  	 <variable id="0" init="150">PricePerTB2</variable>		  
+	  </constantvar>
+	  <changevar>
+	  	 <changevariable id="0" init="0" target="dropdown1_2">Dropdowns2</changevariable>	
+		 <changevariable id="2" init="0" target="slider1_2">SliderU2</changevariable> 
+		 <changevariable id="3" init="0" target="slider2_2">SliderT2</changevariable>   
+	  </changevar> 
+	  <resultboxes>
+	  	<boxgroup id="0">
+			<label>Total per month:</label>
+			<id>objid1_2</id>
+			<default></default>
+			<withborder>yes</withborder>
+			<roundnumber>no</roundnumber>
+			<formula>((( SliderT2 * PricePerTB2 ) * SliderU2) + (SliderU2 * Dropdowns2))</formula>
+		</boxgroup>		 
+	  </resultboxes>
+	  <onload_general>	
+	  	   <onload_generalgroup id="1" resultholder="" roundnumber="yes" type="exe">base.setSelectedItem()</onload_generalgroup>	 	 
+		   <onload_generalgroup id="2" resultholder="" roundnumber="yes" type="exe">base.updateChangeVariables()</onload_generalgroup>	
+		   <onload_generalgroup id="3" resultholder="" roundnumber="yes" type="exe">base.updateResultBox(model)</onload_generalgroup>
+	  </onload_general>	   
+	  <group_objects>
+	  	<object_values id="0">
+		  <type>range</type>
+		  <header>How many user mailboxes do you want?</header>
+		  <id>slider1_2</id>
+		  <label></label>
+		  <default>0</default>
+		  <tooltip></tooltip>
+		  <required>0</required>
+		  <readonly>no</readonly>
+		  <email_label>Mailboxes number</email_label>
+		  <data>
+		  	<contents id="0">
+				<min>5</min>
+				<max>100</max>
+				<step>1</step>
+				<value>5</value>
+			</contents>
+		  </data> 
+		  <addedcontainer></addedcontainer> 
+          <actions>
+		    <event action="change" function="" extendedfunction="base.updateResultBox(model)"></event>
+		  </actions>
+		</object_values> 
+		<object_values id="1">
+		  <type>range</type>
+		  <header>How much storage would you like?</header>
+		  <id>slider2_2</id>
+		  <label></label>
+		  <default>0</default>
+		  <tooltip></tooltip>
+		  <required>0</required>
+		  <readonly>no</readonly>
+		  <email_label>Storage value</email_label>
+		  <data>
+		  	<contents id="0">
+				<min>0.5</min>
+				<max>10</max>
+				<step>0.5</step>
+				<value>0.5</value>
+			</contents>
+		  </data>
+		  <addedcontainer></addedcontainer> 
+		  <actions>
+		    <event action="change" function="" extendedfunction="base.updateResultBox(model)"></event>
+		  </actions>
+		</object_values> 
+		<object_values id="2">
+		  <type>dropdown</type>
+		  <header>Protection level</header>
+		  <id>dropdown1_2</id>
+		  <label>Choose a value</label>
+		  <default></default>
+		  <tooltip>Choose a value</tooltip>
+		  <required>0</required>
+		  <readonly>no</readonly>
+		  <email_label>Protection level</email_label>
+		  <data>
+		  	<contents id="0">
+				<text>Serviced cloud anti-spam and virus +£0</text>
+				<value>0</value>
+				<selected>yes</selected>				 
+			</contents>
+			<contents id="1">
+				<text>Mimecast +£4</text>
+				<value>4</value>
+				<selected>no</selected>				 
+			</contents>			 			 
+		  </data>
+		  <addedcontainer></addedcontainer> 
+		  <actions>
+		    <event action="change" function="" extendedfunction="base.updateResultBox(model)"></event>
+		  </actions>
+		</object_values>
+		<object_values id="3">
+		  <type>button-submit</type>
+		  <header></header>
+		  <id>bs2</id>
+		  <label>Email the result to me</label>
+		  <default></default>
+                  <tooltip></tooltip>
+                  <required></required>
+		  <data></data>
+		  <addedcontainer></addedcontainer>
+		  <actions>
+		    <event action="click" function="base.emailAction()" extendedfunction="">
+		    		<actiongroups id="0" resultholder="" roundnumber="no" type="fetch" other-value="">slider1_2|slider2_2|dropdown1_2</actiongroups>
+		    </event>
+		  </actions>		   
+		</object_values> 
+	  </group_objects>
+	</calc_group>
+</calculator>

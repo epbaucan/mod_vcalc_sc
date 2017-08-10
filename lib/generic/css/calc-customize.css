@@ -1,0 +1,860 @@
+#homepage-calc {
+	margin: 0 auto;
+	float: none;
+}
+
+.calc-border {
+	display: block;
+	background-color: #fff;
+	border: 1px solid #ddd;
+	border-radius: 10px;
+	-webkit-transition: border .2s ease-in-out;
+	-o-transition: border .2s ease-in-out;
+	transition: border .2s ease-in-out;
+}
+
+#hosted-desktop-calc .btn-submit{
+	border-radius: 25px;	
+	outline: 0;
+	background-color: #fff;
+	border-color: #22272b;
+	border-radius: 25px;
+	transition: background 1s;		
+	padding: 10px 30px;
+	text-transform: uppercase;
+	-webkit-transition: background 1s;
+	color: #22272b;	
+	width: 100%;
+}
+
+#hosted-desktop-calc.btn-submit:focus, #hosted-desktop-calc .btn-submit:hover {
+	background-color: #22272b;
+	color: #fff;
+}
+
+#hosted-desktop-calc .btn-primary {
+	border-radius: 25px;
+	outline: 0;
+	background-color: #fff;
+	border-color: #22272b;
+	border-radius: 25px;
+	transition: background 1s;
+	padding: 10px 30px;
+	text-transform: uppercase;
+	-webkit-transition: background 1s;
+	color: #22272b;
+	width: 100%;	
+}
+
+#hosted-desktop-calc .btn-primary:hover,.btn-primary:focus {
+	background-color:#000;
+	color:#FFF;
+}
+
+#mailModal .btn-default {
+	border-radius: 25px;	
+	outline: 0;
+	background-color: #fff;
+	border-color: #22272b;
+	border-radius: 25px;
+	transition: background 1s;		
+	padding: 10px 50px;
+	text-transform: uppercase;
+	-webkit-transition: background 1s;
+	color: #22272b;	
+}
+
+#mailModal .btn-default:focus, #mailModal .btn-default:hover {
+	background-color: #22272b;
+	color: #fff;
+}
+
+#mailModal .btn-primary{
+	background-color: #22272b; 
+	border-radius: 25px; 
+	text-transform: uppercase; 
+	-webkit-transition: background 1s; 
+	transition: background 1s;
+	color:#FFF;
+}
+
+#mailModal btn-primary:focus, #mailModal .btn-primary:hover{
+	background-color:#000;
+	color:#FFF;
+}
+
+.calc-title {
+	margin-top: 0px;
+	color: #3A85C6;	
+}
+
+#hosted-desktop-calc hr {
+	margin-top: 10px !important;
+	margin-bottom: 0px !important;
+}
+
+.pricebox {
+	text-align: center;
+	color: #3A85C6;
+	border: 1px solid #bebebe;
+	font-weight:bold;
+	height: 40px;
+}
+
+.money-value-text {
+	font-size: 25px;
+	margin-bottom: 0px !important;	
+	min-width: 50px;
+	overflow-y: hidden;	
+	height: 40px;
+	padding-top: 5px;
+	float: right;
+}
+
+.money-value-label {
+	font-weight:bold;
+	font-size: 13px;	
+	margin: 10px 0 0 -20px;
+}
+
+.calc-obj-holder{
+	position: relative;
+	width: 98%;
+	margin: 0.5% auto;
+	margin-bottom: 0.6%;
+}
+
+.calc-obj-title{
+	position: relative;
+	text-align: left;	 
+	font-size: 13px;
+	clear: left;
+}
+
+output, .outputdiv{
+	color: #3A85C6;
+	float:right;
+	padding-top: 0px !important;
+	font-size: 14px;
+	margin-top: -5px;
+	z-index: 90;
+}
+
+.obj-clear{ clear: both; }
+
+.outputdiv{
+	padding-right: 2% !important;
+	padding-left: 2% !important;
+	border: #D9D9D9 1px solid;
+	width: 15% !important;
+	text-align: center;
+	height: 25px;
+}
+
+.obj-range-container{
+	float: left;
+	width: 	82%;
+	margin: 2px 0 10px;
+}
+
+.obj-range{
+	position: relative;
+	width: 99%;
+	margin: 0.3% 0 0 1%;	
+	display: none !important;
+}
+
+.header-container{
+	text-align: center;
+	letter-spacing: 5px;	 
+}
+
+.btn-input {
+	display: block;
+}
+
+.btn-input .btn.form-control {
+	text-align: left;
+}
+
+.btn-input .btn.form-control span:first-child {
+	left: 10px;
+	overflow: hidden;
+	position: absolute;
+	right: 25px;
+	top: 5px;
+}
+
+.money-format{
+	padding: 1px;
+	margin: 0 auto;
+	text-align: center;	
+	overflow: hidden;
+	display: block;
+	float: left;
+	border: #000 1px solid;
+ }
+
+.money-format p{ float: left; }
+
+.title-holder{  
+	color: #687077;
+	text-align: center;
+    margin: 10px auto 0px auto;
+	font-size: 1.714rem;
+}
+
+.obj-error{ background: #f8dbdb; border: #e77776 1px solid !important; 	}
+
+.obj-errspan{ position: relative; width: 95%; margin: 3% 2px 0 70%; text-align: right; color: #e77776; 	}
+
+.obj-overlay{ 
+	position: fixed;
+	width: 100%;
+	height:100%;
+	display: flex;
+	align-items: center;
+	background: rgba(0, 0, 0, 0.21);
+	top: 0; 
+}
+
+.obj-overlay .plus {
+	display: flex;
+	margin: 0 auto;
+	font-size: 13px;
+	}
+
+.obj-overlay .plus .red, .red { 
+	color: #F03;
+	width: 80%;
+	margin: 2% auto;
+	background-color: #FFF;
+	padding: 1%;
+	text-align: center;
+}
+
+.obj-overlay .plus .green, .green { 
+	color: #0C0;
+	width: 80%;
+	margin: 2% auto;
+	background-color: #FFF;
+	padding: 1%;
+	text-align: center;
+}
+
+label.control-label {
+	float: left;
+}
+
+.check-label{
+	font-weight: 300 !important;
+	font-size: 12px !important;
+}
+
+.flow-text{ font-size: 11px !important; }
+.btn-calc-dd .caret { display: inherit !important; margin-left: 98%; }
+.obj-padding-devices{ padding: 0.4%; }
+.btn-calc-dd span[data-bind=label]{ padding: 2px 0 0 10px; font-size: 13px; text-transform: capitalize; }
+.calc-btn-group li a { font-size: 12px; }
+.btn-custom-class[data-object-model=CCC]{ margin-top: 8%; }
+
+
+/*
+
+         NOUISlider.css
+	
+*/
+
+
+
+/* Functional styling;
+
+ * These styles are required for noUiSlider to function.
+
+ * You don't need to change these rules to apply your design.
+
+ */
+
+.noUi-target,
+
+.noUi-target * {
+
+-webkit-touch-callout: none;
+
+-webkit-user-select: none;
+
+-ms-touch-action: none;
+
+	touch-action: none;
+
+-ms-user-select: none;
+
+-moz-user-select: none;
+
+	user-select: none;
+
+-moz-box-sizing: border-box;
+
+	box-sizing: border-box;
+
+}
+
+.noUi-target {
+
+	position: relative;
+
+	direction: ltr;
+
+}
+
+.noUi-base {
+
+	width: 100%;
+
+	height: 100%;
+
+	position: relative;
+
+	z-index: 1; /* Fix 401 */
+
+}
+
+.noUi-origin {
+
+	position: absolute;
+
+	right: 0;
+
+	top: 0;
+
+	left: 0;
+
+	bottom: 0;
+
+}
+
+.noUi-handle {
+
+	position: relative;
+
+	z-index: 1;
+
+}
+
+.noUi-stacking .noUi-handle {
+
+/* This class is applied to the lower origin when
+
+   its values is > 50%. */
+
+	z-index: 10;
+
+}
+
+.noUi-state-tap .noUi-origin {
+
+-webkit-transition: left 0.3s, top 0.3s;
+
+	transition: left 0.3s, top 0.3s;
+
+}
+
+.noUi-state-drag * {
+
+	cursor: inherit !important;
+
+}
+
+
+
+/* Painting and performance;
+
+ * Browsers can paint handles in their own layer.
+
+ */
+
+.noUi-base,
+
+.noUi-handle {
+
+	-webkit-transform: translate3d(0,0,0);
+
+	transform: translate3d(0,0,0);
+
+}
+
+
+
+/* Slider size and handle placement;
+
+ */
+
+.noUi-horizontal {
+
+	height: 18px;
+
+}
+
+.noUi-horizontal .noUi-handle {
+
+	width: 34px;
+
+	height: 28px;
+
+	left: -17px;
+
+	top: -6px;
+
+}
+
+.noUi-vertical {
+
+	width: 18px;
+
+}
+
+.noUi-vertical .noUi-handle {
+
+	width: 28px;
+
+	height: 34px;
+
+	left: -6px;
+
+	top: -17px;
+
+}
+
+
+
+/* Styling;
+
+ */
+
+.noUi-background {
+
+	background: #ececec;
+
+}
+
+.noUi-connect {
+
+	-webkit-transition: background 450ms;
+
+	transition: background 450ms;
+
+}
+
+.noUi-origin {
+
+	border-radius: 2px;
+
+}
+
+.noUi-target {
+
+	border-radius: 4px;
+
+
+}
+
+
+
+
+
+/* Handles and cursors;
+
+ */
+
+.noUi-draggable {
+
+	cursor: w-resize;
+
+}
+
+.noUi-vertical .noUi-draggable {
+
+	cursor: n-resize;
+
+}
+
+.noUi-handle {
+
+	border-radius: 3px;
+
+	background: #FFF;
+
+	cursor: default;
+
+	box-shadow: inset 0 0 1px #FFF,
+
+				inset 0 1px 7px #EBEBEB,
+
+				0 3px 6px -3px #BBB;
+
+}
+
+.noUi-active {
+
+	box-shadow: inset 0 0 1px #FFF,
+
+				inset 0 1px 7px #DDD,
+
+				0 3px 6px -3px #BBB;
+
+}
+
+
+
+/* Handle stripes;
+
+ */
+
+.noUi-handle:before,
+
+.noUi-handle:after {
+
+	content: "";
+
+	display: block;
+
+	position: absolute;
+
+	height: 14px;
+
+	width: 1px;
+
+	background: #E8E7E6;
+
+	left: 14px;
+
+	top: 6px;
+
+}
+
+.noUi-handle:after {
+
+	left: 17px;
+
+}
+
+.noUi-vertical .noUi-handle:before,
+
+.noUi-vertical .noUi-handle:after {
+
+	width: 14px;
+
+	height: 1px;
+
+	left: 6px;
+
+	top: 14px;
+
+}
+
+.noUi-vertical .noUi-handle:after {
+
+	top: 17px;
+
+}
+
+
+
+/* Disabled state;
+
+ */
+
+[disabled].noUi-connect,
+
+[disabled] .noUi-connect {
+
+	background: #B8B8B8;
+
+}
+
+[disabled].noUi-origin,
+
+[disabled] .noUi-handle {
+
+	cursor: not-allowed;
+
+}
+
+
+
+/*
+
+Tooltips 
+
+*/
+
+.noUi-tooltip {
+	display: block;
+	position: absolute;
+	border: 1px solid #D9D9D9;
+	border-radius: 3px;
+	background: #fff;
+	padding: 5px;
+	text-align: center;
+}
+
+.noUi-horizontal .noUi-handle-lower .noUi-tooltip {
+	top: -32px;
+}
+.noUi-horizontal .noUi-handle-upper .noUi-tooltip {
+	bottom: -32px;
+}
+.noUi-vertical .noUi-handle-lower .noUi-tooltip {
+	left: 120%;
+}
+.noUi-vertical .noUi-handle-upper .noUi-tooltip {
+	right: 120%;
+}
+
+
+/*
+
+PIPS part
+
+*/
+
+
+/* Base;
+ *
+ */
+.noUi-pips,
+.noUi-pips * {
+-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+.noUi-pips {
+	position: absolute;
+	color: #999;
+}
+
+/* Values;
+ *
+ */
+.noUi-value {
+	position: absolute;
+	text-align: center;
+}
+.noUi-value-sub {
+	color: #ccc;
+	font-size: 10px;
+}
+
+/* Markings;
+ *
+ */
+.noUi-marker {
+	position: absolute;
+	background: #CCC;
+}
+.noUi-marker-sub {
+	background: #AAA;
+}
+.noUi-marker-large {
+	background: #AAA;
+}
+
+/* Horizontal layout;
+ *
+ */
+.noUi-pips-horizontal {
+	padding: 10px 0;
+	height: 80px;
+	top: 100%;
+	left: 0;
+	width: 100%;
+}
+.noUi-value-horizontal {
+	-webkit-transform: translate3d(-50%,50%,0);
+	transform: translate3d(-50%,50%,0);
+}
+
+.noUi-marker-horizontal.noUi-marker {
+	margin-left: -1px;
+	width: 2px;
+	height: 5px;
+}
+.noUi-marker-horizontal.noUi-marker-sub {
+	height: 10px;
+}
+.noUi-marker-horizontal.noUi-marker-large {
+	height: 15px;
+}
+
+/* Vertical layout;
+ *
+ */
+.noUi-pips-vertical {
+	padding: 0 10px;
+	height: 100%;
+	top: 0;
+	left: 100%;
+}
+.noUi-value-vertical {
+	-webkit-transform: translate3d(0,-50%,0);
+	transform: translate3d(0,-50%,0);
+	padding-left: 25px;
+}
+
+.noUi-marker-vertical.noUi-marker {
+	width: 5px;
+	height: 2px;
+	margin-top: -1px;
+}
+.noUi-marker-vertical.noUi-marker-sub {
+	width: 10px;
+}
+.noUi-marker-vertical.noUi-marker-large {
+	width: 15px;
+}
+
+
+.noUi-horizontal{ 
+	height: 12px !important; 
+	width: 95% !important;
+}
+	
+.noUi-base{ width: 99% !important; }
+.noUi-target{ border-radius: 10px !important; }
+.noUi-origin{ border-radius: 10px !important; right: -2.1% !important; }
+.noUi-horizontal .noUi-handle{ 
+	top: -3px !important;
+	width: 18px !important;
+	height: 18px !important;
+	background: #3a81bf !important;
+	border-radius: 20px !important;
+	cursor: pointer !important;
+	box-shadow: none !important;
+	left: -4px !important;
+}
+
+.noUi-base .noUi-handle{ right: 5%; }
+.noUi-handle:before, .noUi-handle:after{ background: none !important; }
+.noUi-connect{ background: #BDBDCB !important; }
+
+
+@media (min-width:993px) and (max-width:1198px) {
+    .pricebox {
+        padding: 0 5px
+    }
+    .money-value-label {
+        font-size: 10px!important;
+        margin: 10px 0 0 -30px!important
+    }
+    .money-value-text {
+        font-size: 20px!important;
+        padding-top: 7px
+    }
+    .btn-submit {
+        padding: 10px 20px!important
+    }
+    .calc-obj-title {
+        margin-bottom: 10px
+    }
+    .noUi-horizontal .noUi-handle {
+        top: -7px;
+        width: 25px;
+        height: 25px
+    }
+    .obj-range-container {
+        width: 75%!important
+    }
+    .outputdiv {
+        width: 18%!important;
+        padding: 5px!important
+    }
+    #it-support-calc .money-value-label {
+        font-size: 13px!important
+    }
+	
+	.btn-custom-class[data-object-model=CCC]{ margin-top: 2%!important; }
+}
+
+@media (min-width:280px) and (max-width:992px) {
+    .btn-submit {
+        position: relative;
+        width: 60%!important
+    }
+    .pricebox {
+        width: 50%!important;
+        position: relative!important;
+        margin: 10px auto
+    }
+    .noUi-horizontal .noUi-handle {
+        top: -7px;
+        width: 25px;
+        height: 25px
+    }
+    .calc-obj-title {
+        margin-bottom: 10px
+    }
+    .outputdiv {
+        width: 11%!important;
+        padding: 5px!important
+    }
+    .obj-range-container {
+        width: 85%!important
+    }
+    #it-support-calc .pricebox {
+        width: 60%!important
+    }
+    #it-support-calc .btn-submit {
+        width: 75%!important
+    }
+    #it-support-calc .outputdiv {
+        padding-top: 6px!important
+    }
+	
+	.btn-custom-class[data-object-model=CCC]{ margin-top: 2% !important; }
+}
+
+@media (max-width:733px) {
+    #it-support-calc .obj-range-container {
+        width: 80%!important
+    }
+}
+
+@media (max-width:570px) {
+    #it-support-calc .obj-range-container {
+        width: 75%!important
+    }
+}
+
+@media (max-width:400px) {
+    .btn-submit {
+        padding: 10px;
+        width: 80%!important
+    }
+    #mailModal .btn-default {
+        padding: 10px 20px
+    }
+    .outputdiv {
+        width: 11%!important;
+        padding: 5px!important
+    }
+    .obj-range-container {
+        width: 80%!important
+    }
+    #it-support-calc .obj-range-container {
+        width: 70%!important
+    }
+    #it-support-calc .pricebox {
+        width: 60%!important
+    }
+    #it-support-calc .btn-submit {
+        padding: 10px;
+        font-size: 13px
+    }
+	
+	.btn-custom-class[data-object-model=CCC]{ margin-top: 2% !important; }
+}
+
+@media (max-width:369px) {
+    #it-support-calc .obj-range-container {
+        width: 60%!important
+    }
+}
